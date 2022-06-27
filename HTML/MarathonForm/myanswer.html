@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Marathon Register Form</title>
+  </head>
+  <body>
+    <h1>Race Registration!</h1>
+    <form action="/register">
+      <div>
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" required />
+        <label for="last_name">Last name</label>
+        <input type="text" id="last_name" />
+      </div>
+      <div>
+        <p>Select a Race</p>
+        <input type="radio" name="race" value="1" id="race1" />
+        <label for="race1">Fun Run 5km</label><br />
+        <input type="radio" name="race" value="2" id="race2" />
+        <label for="race2">Half Marathon</label><br />
+        <input type="radio" name="race" value="3" id="race3" />
+        <label for="race3">Full Marathon</label><br />
+      </div>
+      <!-- type 이 radio 인 경우 반드시 value가 있어야 데이터 전송에 on이 아닌 실제 선택한 
+      데이터가 넘어가게 된다. 반드시 value의 값을 입력할 것! -->
+      <div>
+        <label for="email">Email</label>
+        <input type="email" required id="email" />
+        <label for="password">Password</label>
+        <input type="password" required id="password" />
+      </div>
+      <div>
+        <label for="age">Select Age Group</label>
+        <select name="age" id="age">
+          <option value="group1">under 19</option>
+          <option value="group2">20 to 29</option>
+          <option value="group3">30 to 39</option>
+          <option value="group4">40 to 49</option>
+          <option value="gorup5">over 50</option>
+        </select>
+      </div>
+    </form>
+  </body>
+</html>
