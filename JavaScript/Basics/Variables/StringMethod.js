@@ -9,4 +9,3 @@ console.log(msg.toUpperCase());
 
 // .trim() -> 문자열 앞뒤로의 공백을 지움. 사이 공백은 유지.
 
-
