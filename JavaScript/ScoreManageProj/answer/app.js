@@ -20,15 +20,28 @@ winningScoreSelect.addEventListener("change", (e) => {
   reset();
 });
 
+function gameOver(player, opponent) {
+  isGameOver = true;
+  player.display.classList.add("has-text-success");
+  opponent.display.classList.add("has-text-danger");
+  player.button.disabled = true;
+  opponent.button.disabled = true;
+}
+
 function updateScores(player, opponent) {
   if (!isGameOver) {
     player.score += 1;
-    if (player.score === winningScore) {
-      isGameOver = true;
-      player.display.classList.add("has-text-success");
-      opponent.display.classList.add("has-text-danger");
-      player.button.disabled = true;
-      opponent.button.disabled = true;
+    if (
+      player.score >= winningScore - 1 &&
+      player.score - opponent.score <= 2
+    ) {
+      if (player.score - opponent.score === 2) {
+        gameOver(player, opponent);
+      }
+    } else {
+      if (player.score === winningScore) {
+        gameOver(player, opponent);
+      }
     }
     player.display.textContent = player.score;
   }
