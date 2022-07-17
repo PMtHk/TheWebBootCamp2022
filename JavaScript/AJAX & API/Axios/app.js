@@ -1,53 +1,44 @@
-// fetch('https://api.cryptonator.com/api/ticker/btc-usd')
-//     .then(res => {
-//         console.log("RESPONSE, WAITING TO PARSE...", res)
-//         return res.json()
-//     })
-//     .then(data => {
-//         console.log("DATA PARSED...")
-//         console.log(data.ticker.price)
-//     })
-//     .catch(e => {
-//         console.log("OH NO! ERROR!", e)
-//     })
-
-// axios.get('https://api.cryptonator.com/api/ticker/btc-usd')
-//     .then(res => {
-//         console.log(res.data.ticker.price)
-//     })
-//     .catch(err => {
-//         console.log("ERROR!", err)
-//     })
+axios
+  .get(
+    "https://crix-api-endpoint.upbit.com/v1/crix/candles/days/?code=CRIX.UPBIT.KRW-BTC"
+  )
+  .then((res) => {
+    console.log("KRW-BTC:", res.data[0].tradePrice);
+  })
+  .catch((err) => {
+    console.log("ERROR!", err);
+  });
 
 const fetchBitcoinPrice = async () => {
   try {
     const res = await axios.get(
-      "https://api.cryptonator.com/api/ticker/btc-usd"
+      "https://crix-api-endpoint.upbit.com/v1/crix/candles/days/?code=CRIX.UPBIT.KRW-BTC"
     );
-    console.log(res.data.ticker.price);
+    console.log("TradePrice is now :", res.data[0].tradePrice);
   } catch (e) {
     console.log("ERROR!", e);
   }
 };
 
 const jokes = document.querySelector("#jokes");
-const button = document.querySelector("button");
+const btn = document.querySelector("button");
 
-const addNewJoke = async () => {
-  const jokeText = await getDadJoke();
-  const newLI = document.createElement("LI");
-  newLI.append(jokeText);
-  jokes.append(newLI);
-};
-
-const getDadJoke = async () => {
+const getAzeGag = async () => {
   try {
+    // header 추가
     const config = { headers: { Accept: "application/json" } };
     const res = await axios.get("https://icanhazdadjoke.com/", config);
     return res.data.joke;
   } catch (e) {
-    return "NO JOKES AVAILABLE! SORRY :(";
+    return "error";
   }
 };
 
-button.addEventListener("click", addNewJoke);
+const addGagList = async () => {
+  const gagText = await getAzeGag();
+  const newLi = document.createElement("li");
+  newLi.append(gagText);
+  jokes.append(newLi);
+};
+
+btn.addEventListener("click", addGagList);
