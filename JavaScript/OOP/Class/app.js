@@ -29,3 +29,5 @@ class Color {
 
 const tomato = new Color(255, 67, 89, "tomato");
 const white = new Color(255, 255, 255, "white");
+
+
