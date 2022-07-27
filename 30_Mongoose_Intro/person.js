@@ -25,4 +25,16 @@ personSchemna
     this.last = v.substr(v.indexOf(" ") + 1);
   });
 
+// middleware
+personSchemna.pre("save", async function () {
+  this.first = this.first.toUpperCase();
+  this.last = this.last.toUpperCase();
+
+  console.log("About to Save!!!");
+});
+
+personSchemna.post("save", async function () {
+  console.log("Just Saved!!!");
+});
+
 const Person = mongoose.model("Person", personSchemna);
