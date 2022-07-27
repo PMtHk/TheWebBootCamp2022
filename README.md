@@ -10,7 +10,6 @@
     <td>Section 2: An Introduction to Web Development</td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/01_HTML_Intro">Section 3: HTML: The Essentials</a></td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/02_HTML_Semantic">Section 4: HTML: Next Steps & Semantics</td>
-    als</td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/03_HTML_Form%20%26%20Table">Section 5: HTML: Froms & Tables</td>
   </tr>
   <tr>
