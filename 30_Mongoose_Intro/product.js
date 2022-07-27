@@ -52,6 +52,10 @@ productSchema.methods.addCategory = function (newCat) {
   return this.save();
 };
 
+productSchema.statics.fireSale = function () {
+  return this.updateMany({}, { onSale: true, price: 0 });
+};
+
 const Product = mongoose.model("Product", productSchema);
 const findProduct = async () => {
   const foundProduct = await Product.findOne({ name: "Bike Helmet" });
@@ -60,6 +64,10 @@ const findProduct = async () => {
   console.log(foundProduct);
   //  await foundProduct.greet();
 };
+
+Product.fireSale().then((res) => {
+  console.log(res);
+});
 
 // const bike = new Product(
 //   {
