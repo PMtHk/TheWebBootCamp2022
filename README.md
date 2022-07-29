@@ -58,8 +58,8 @@
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/30_Mongoose_Intro">Section 36: Our First Database: MongoDB</td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/31_Mongoose_Express">Section 37: Connecting To Mongo With Mongoose</td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/31_Mongoose_Express">Section 38: Putting It all Together: Mongoose With Express</td>
-    <td>Section 39: YelpCamp: Campgrounds CRUD</td>
-    <td>Section 40: Middleware: The Key To Express</td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/6b7834b6a6e01db107cb0770d6c2284a16622f87">Section 39: YelpCamp: Campgrounds CRUD</a></td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/32_Middleware_Intro">Section 40: Middleware: The Key To Express</a></td>
   </tr>
   <tr>
     <td>Section 41: YelpCamp: Adding Basic Styles</td>
