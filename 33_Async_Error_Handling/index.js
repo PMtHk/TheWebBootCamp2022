@@ -111,6 +111,20 @@ app.delete("/products/:id", async (req, res, next) => {
   }
 });
 
+const handleValidationError = (err) => {
+  console.dir(err);
+  return new AppError(`Mongo Validation Failed... ${err.mssage}`, 400);
+};
+
+app.use((err, req, res, next) => {
+  // logger for recording
+  console.log(err.name);
+  if (err.name === "ValidationError") err = handleValidationError(err);
+  if (err.name === "CastError") err = handleValidationError(err);
+  next(err);
+  // ValidationError, CastError -> mongoose error
+});
+
 app.use((err, req, res, next) => {
   const { status = 500, message = "Something Went Wrong!" } = err;
   res.status(status).send(message);
