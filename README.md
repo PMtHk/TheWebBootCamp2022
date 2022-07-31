@@ -62,8 +62,9 @@
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/32_Middleware_Intro">Section 40: Middleware: The Key To Express</a></td>
   </tr>
   <tr>
-    <td>Section 41: YelpCamp: Adding Basic Styles</td>
-    <td>Section 42: Handling Errors In Express Apps</td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/f2f292b48e0a479aa5639298e9fd1f6898f3c32d">Section 41: YelpCamp: Adding Basic Styles</a></td>
+    <td>Section 42: Handling Errors In Express Apps<br/><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/fde935f2dc1b6effa213c1496aa3c7a25e47e8d1">
+    (not async)</a><br/><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/33_Async_Error_Handling">(async)</a></td>
     <td>Section 43: YelpCamp: Errors & Validating Data</td>
     <td>Section 44: Data Relationships With Mongo</td>
     <td>Section 45: Mongo Relationships with Express</td>
