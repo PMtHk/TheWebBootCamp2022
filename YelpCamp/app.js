@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
 const Campground = require('./models/campground');
+const Joi = require('joi');
+const { campgroundSchema } = require('./schemas.js');
 const methodOverride = require('method-override');
 const engine = require('ejs-mate');
 const catchAsync = require('./utils/catchAsync');
@@ -26,6 +28,17 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
+const validateCampground = (req, res, next) => {
+  // schema 에 data 전달하기
+  const { error } = campgroundSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((element = element.message)).join(',');
+    throw new ExpressError(result.error.deatails, 400);
+  } else {
+    next();
+  }
+};
+
 app.get('/', (req, res) => {
   res.render('home');
 });
@@ -44,7 +57,7 @@ app.get('/campgrounds/new', (req, res) => {
 
 app.get(
   '/campgrounds/:id',
-  catchAsync(async (req, res, next) => {
+  catchAsync(async (req, res) => {
     const { id } = req.params;
     const targetCamp = await Campground.findById(id);
     res.render('campgrounds/detail', { targetCamp });
@@ -53,9 +66,10 @@ app.get(
 
 app.post(
   '/campgrounds',
+  validateCampground,
   catchAsync(async (req, res) => {
-    if (!req.body.campground)
-      throw new ExpressError('Invalid Campground Data', 400);
+    // if (!req.body.campground) throw new ExpressError('Invalid Campground Data', 400);
+
     const campground = new Campground(req.body.campground);
     await campground.save();
     res.redirect(`/campgrounds/${campground._id}`);
@@ -73,6 +87,7 @@ app.get(
 
 app.put(
   '/campgrounds/:id',
+  validateCampground,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findByIdAndUpdate(id, {
