@@ -70,10 +70,10 @@
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/35_Mongo%20Relationships%20with%20Express">Section 45: Mongo Relationships with Express</a></td>
   </tr>
   <tr>
-    <td>Section 46: YelpCamp: Adding The Reviews Model</td>
-    <td>Section 47: Express Router & Cookies</td>
-    <td>Section 48: Express Session & Flash</td>
-    <td>Section 49: YelpCamp: Restructuring & Flash</td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/YelpCamp">Section 46: YelpCamp: Adding The Reviews Model</a></td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/36_Express_Router%20%26%20Cookies">Section 47: Express Router & Cookies</a></td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/37_Express_Session%20%26%20Flash">Section 48: Express Session & Flash</a></td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/b1794d62b5bb092d2318ed4c99fa18b81dc38e54">Section 49: YelpCamp: Restructuring & Flash</a></td>
     <td>Section 50: Authentication From "Scratch"</td>
   </tr>
   <tr>
