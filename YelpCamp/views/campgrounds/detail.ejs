@@ -34,7 +34,8 @@
       <form
         action="/campgrounds/<%=targetCamp._id%>/reviews"
         method="POST"
-        class="card-body"
+        class="card-body validated-form"
+        novalidate
       >
         <h4 class="card-title">
           Leave a Review : <i><%=targetCamp.title%></i>
@@ -59,7 +60,11 @@
             id="body"
             cols="30"
             rows="3"
+            required
+            placeholder="Leave a comment here!"
           ></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">Please fill in this field.</div>
         </div>
         <button class="btn btn-success">Submit</button>
       </form>

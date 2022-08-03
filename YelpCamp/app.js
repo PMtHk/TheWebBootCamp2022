@@ -3,7 +3,7 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Campground = require('./models/campground');
 const Joi = require('joi');
-const { campgroundSchema } = require('./schemas.js');
+const { campgroundSchema, reviewSchema } = require('./schemas.js');
 const methodOverride = require('method-override');
 const engine = require('ejs-mate');
 const catchAsync = require('./utils/catchAsync');
@@ -32,6 +32,16 @@ app.use(methodOverride('_method'));
 const validateCampground = (req, res, next) => {
   // schema 에 data 전달하기
   const { error } = campgroundSchema.validate(req.body);
+  if (error) {
+    const msg = error.details.map((element = element.message)).join(',');
+    throw new ExpressError(result.error.deatails, 400);
+  } else {
+    next();
+  }
+};
+
+const validateReview = (req, res, next) => {
+  const { error } = reviewSchema.validate(req.body);
   if (error) {
     const msg = error.details.map((element = element.message)).join(',');
     throw new ExpressError(result.error.deatails, 400);
@@ -109,6 +119,7 @@ app.delete(
 
 app.post(
   '/campgrounds/:id/reviews',
+  validateReview,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findById(id);
