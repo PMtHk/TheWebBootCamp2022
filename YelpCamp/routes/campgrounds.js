@@ -35,6 +35,13 @@ router.get(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const targetCamp = await Campground.findById(id).populate('reviews');
+    console.dir(targetCamp);
+    if (targetCamp === null) {
+      // 현재 _id 형태일때만 동작. 일반 String 형식이 들어오면 flash - X
+      // 에러 핸들링은 됨.
+      req.flash('error', 'Cannot find that campground!');
+      return res.redirect('/campgrounds');
+    }
     res.render('campgrounds/detail', { targetCamp });
   })
 );
@@ -47,6 +54,7 @@ router.post(
 
     const campground = new Campground(req.body.campground);
     await campground.save();
+    req.flash('success', 'Successfully Create a New Campground');
     res.redirect(`/campgrounds/${campground._id}`);
   })
 );
@@ -56,6 +64,12 @@ router.get(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const targetCamp = await Campground.findById(id);
+    if (targetCamp === null) {
+      // 현재 _id 형태일때만 동작. 일반 String 형식이 들어오면 flash - X
+      // 에러 핸들링은 됨.
+      req.flash('error', 'Cannot find that campground!');
+      return res.redirect('/campgrounds');
+    }
     res.render('campgrounds/edit', { targetCamp });
   })
 );
@@ -68,6 +82,8 @@ router.put(
     const campground = await Campground.findByIdAndUpdate(id, {
       ...req.body.campground,
     });
+    req.flash('success', 'Successfully Updated Campground');
+
     res.redirect(`/campgrounds/${campground._id}`);
   })
 );
@@ -77,6 +93,7 @@ router.delete(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Campground.findByIdAndDelete(id);
+    req.flash('success', 'Successfully Deleted Campground');
     res.redirect('/campgrounds');
   })
 );
