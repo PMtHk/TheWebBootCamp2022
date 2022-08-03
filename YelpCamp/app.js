@@ -34,7 +34,7 @@ const validateCampground = (req, res, next) => {
   const { error } = campgroundSchema.validate(req.body);
   if (error) {
     const msg = error.details.map((element = element.message)).join(',');
-    throw new ExpressError(result.error.deatails, 400);
+    throw new ExpressError(msg, 400);
   } else {
     next();
   }
@@ -43,8 +43,8 @@ const validateCampground = (req, res, next) => {
 const validateReview = (req, res, next) => {
   const { error } = reviewSchema.validate(req.body);
   if (error) {
-    const msg = error.details.map((element = element.message)).join(',');
-    throw new ExpressError(result.error.deatails, 400);
+    const msg = error.details.map((element) => element.message).join(',');
+    throw new ExpressError(msg, 400);
   } else {
     next();
   }
@@ -70,7 +70,7 @@ app.get(
   '/campgrounds/:id',
   catchAsync(async (req, res) => {
     const { id } = req.params;
-    const targetCamp = await Campground.findById(id);
+    const targetCamp = await Campground.findById(id).populate('reviews');
     res.render('campgrounds/detail', { targetCamp });
   })
 );
