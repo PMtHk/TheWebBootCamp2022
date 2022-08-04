@@ -2,10 +2,12 @@ const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
 const { campgroundSchema } = require('../schemas.js');
+const flash = require('connect-flash');
 
 const ExpressError = require('../utils/ExpressError');
 const Campground = require('../models/campground');
 const methodOverride = require('method-override');
+const { isLoggedIn } = require('../middleware');
 
 const validateCampground = (req, res, next) => {
   // schema 에 data 전달하기
@@ -26,7 +28,7 @@ router.get(
   })
 );
 
-router.get('/new', (req, res) => {
+router.get('/new', isLoggedIn, (req, res) => {
   res.render('campgrounds/new');
 });
 
@@ -48,6 +50,7 @@ router.get(
 
 router.post(
   '/',
+  isLoggedIn,
   validateCampground,
   catchAsync(async (req, res) => {
     // if (!req.body.campground) throw new ExpressError('Invalid Campground Data', 400);
@@ -61,6 +64,7 @@ router.post(
 
 router.get(
   '/:id/edit',
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const targetCamp = await Campground.findById(id);
@@ -76,6 +80,7 @@ router.get(
 
 router.put(
   '/:id',
+  isLoggedIn,
   validateCampground,
   catchAsync(async (req, res) => {
     const { id } = req.params;
@@ -90,6 +95,7 @@ router.put(
 
 router.delete(
   '/:id',
+  isLoggedIn,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Campground.findByIdAndDelete(id);
