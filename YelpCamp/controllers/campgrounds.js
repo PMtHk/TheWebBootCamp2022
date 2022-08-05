@@ -48,11 +48,23 @@ module.exports.renderEditForm = async (req, res) => {
   res.render('campgrounds/edit', { targetCamp });
 };
 
+// 현재 업데이트시 새로운 객체가 생기고 db에 저장됨
 module.exports.updateCampground = async (req, res) => {
   const { id } = req.params;
+
   const campground = await Campground.findByIdAndUpdate(id, {
     ...req.body.campgorund,
   });
+
+  const imgs = req.files.map((f) => ({
+    url: f.path,
+    filename: f.filename,
+  }));
+
+  campground.images.push(...imgs);
+
+  await campground.save();
+
   req.flash('success', 'Successfully Updated Campground');
   res.redirect(`/campgrounds/${campground._id}`);
 };

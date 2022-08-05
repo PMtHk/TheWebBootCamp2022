@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({ mergeParams: true });
 const catchAsync = require('../utils/catchAsync');
 const campgrounds = require('../controllers/campgrounds');
 const ExpressError = require('../utils/ExpressError');
@@ -26,6 +26,7 @@ router
   .put(
     isLoggedIn,
     isAuthor,
+    upload.array('image'),
     validateCampground,
     catchAsync(campgrounds.updateCampground)
   )
