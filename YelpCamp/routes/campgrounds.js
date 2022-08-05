@@ -7,28 +7,7 @@ const flash = require('connect-flash');
 const ExpressError = require('../utils/ExpressError');
 const Campground = require('../models/campground');
 const methodOverride = require('method-override');
-const { isLoggedIn } = require('../middleware');
-
-const validateCampground = (req, res, next) => {
-  // schema 에 data 전달하기
-  const { error } = campgroundSchema.validate(req.body);
-  if (error) {
-    const msg = error.details.map((element) => element.message).join(',');
-    throw new ExpressError(msg, 400);
-  } else {
-    next();
-  }
-};
-
-const isAuthor = async (req, res, next) => {
-  const { id } = req.params;
-  const campground = await Campground.findById(id);
-  if (!campground.author.equals(req.user._id)) {
-    req.flash('error', 'You are not allowed to edit this Campground');
-    return res.redirect(`/campgrounds/${id}`);
-  }
-  next();
-};
+const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
 
 router.get(
   '/',
@@ -47,7 +26,7 @@ router.get(
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const targetCamp = await Campground.findById(id)
-      .populate('reviews')
+      .populate({ path: 'reviews', populate: { path: 'author' } })
       .populate('author');
     // console.log(targetCamp);
     if (targetCamp === null) {
