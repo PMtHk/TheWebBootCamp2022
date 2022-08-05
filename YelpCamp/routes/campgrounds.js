@@ -1,12 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const catchAsync = require('../utils/catchAsync');
-const { campgroundSchema } = require('../schemas.js');
-const flash = require('connect-flash');
 const campgrounds = require('../controllers/campgrounds');
 const ExpressError = require('../utils/ExpressError');
-const Campground = require('../models/campground');
-const methodOverride = require('method-override');
 const { isLoggedIn, isAuthor, validateCampground } = require('../middleware');
 
 router.get('/', catchAsync(campgrounds.index));
