@@ -20,6 +20,16 @@ const validateCampground = (req, res, next) => {
   }
 };
 
+const isAuthor = async (req, res, next) => {
+  const { id } = req.params;
+  const campground = await Campground.findById(id);
+  if (!campground.author.equals(req.user._id)) {
+    req.flash('error', 'You are not allowed to edit this Campground');
+    return res.redirect(`/campgrounds/${id}`);
+  }
+  next();
+};
+
 router.get(
   '/',
   catchAsync(async (req, res) => {
@@ -39,7 +49,7 @@ router.get(
     const targetCamp = await Campground.findById(id)
       .populate('reviews')
       .populate('author');
-    console.log(targetCamp);
+    // console.log(targetCamp);
     if (targetCamp === null) {
       // 현재 _id 형태일때만 동작. 일반 String 형식이 들어오면 flash - X
       // 에러 핸들링은 됨.
@@ -68,6 +78,7 @@ router.post(
 router.get(
   '/:id/edit',
   isLoggedIn,
+  isAuthor,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const targetCamp = await Campground.findById(id);
@@ -84,14 +95,14 @@ router.get(
 router.put(
   '/:id',
   isLoggedIn,
+  isAuthor,
   validateCampground,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     const campground = await Campground.findByIdAndUpdate(id, {
-      ...req.body.campground,
+      ...req.body.campgorund,
     });
     req.flash('success', 'Successfully Updated Campground');
-
     res.redirect(`/campgrounds/${campground._id}`);
   })
 );
@@ -99,6 +110,7 @@ router.put(
 router.delete(
   '/:id',
   isLoggedIn,
+  isAuthor,
   catchAsync(async (req, res) => {
     const { id } = req.params;
     await Campground.findByIdAndDelete(id);

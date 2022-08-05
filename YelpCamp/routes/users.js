@@ -41,7 +41,7 @@ router.post(
   }),
   (req, res) => {
     req.flash('success', 'Welcome Back!');
-    console.log(req.session);
+    // console.log(req.session);
     res.redirect(req.session.returnTo || '/campgrounds');
     delete req.session.returnTo;
   }
