@@ -4,30 +4,31 @@ const catchAsync = require('../utils/catchAsync');
 const passport = require('passport');
 const users = require('../controllers/users');
 
-router.get('/register', users.renderRegisterForm);
+router
+  .route('/register')
+  .get(users.renderRegisterForm)
+  .post(catchAsync(users.register));
 
-router.post('/register', catchAsync(users.register));
+router
+  .route('login')
+  .get('/login', users.renderLoginForm)
+  .post(
+    '/login',
+    passport.authenticate('local', {
+      failureFlash: true,
+      failureRedirect: '/login',
+      keepSessionInfo: true, // session reset 을 막자!
+    }),
+    users.login
+  );
 
-router.get('/login', users.renderLoginForm);
+router.get('/logout', users.logout);
 
-router.post(
-  '/login',
-  passport.authenticate('local', {
-    failureFlash: true,
-    failureRedirect: '/login',
-    keepSessionInfo: true, // session reset 을 막자!
-  }),
-  users.login
-);
-
-// passport ~0.5
+// passport ~0.5 but now...
 // router.get('/logout', async (req, res) => {
 //   await req.logout();
 //   req.flash('success', 'Goodbye!');
 //   res.redirect('/campgrounds');
 // });
-
-// passport 0.6~
-router.get('/logout', users.logout);
 
 module.exports = router;
