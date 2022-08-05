@@ -1,16 +1,16 @@
 // seed를 db에 업로드 하기 위한 작업
-const mongoose = require("mongoose");
-const cities = require("./cities");
-const Campground = require("../models/campground");
-const { places, descriptors } = require("./seedHelper");
+const mongoose = require('mongoose');
+const cities = require('./cities');
+const Campground = require('../models/campground');
+const { places, descriptors } = require('./seedHelper');
 
 mongoose
-  .connect("mongodb://localhost:27017/yelp-camp")
+  .connect('mongodb://localhost:27017/yelp-camp')
   .then(() => {
-    console.log("Connected to Database");
+    console.log('Connected to Database');
   })
   .catch((err) => {
-    console.log("MongoDB Connection Failed");
+    console.log('MongoDB Connection Failed');
     console.log(err);
   });
 
@@ -31,11 +31,12 @@ const seedDB = async () => {
     const random1000 = Math.floor(Math.random() * 1000);
     const price = Math.floor(Math.random() * 30) + 10;
     const camp = new Campground({
+      author: '62ecaadd2ac4cb94d05dfe65',
       location: `${cities[random1000].city}, ${cities[random1000].state}`,
       title: `${sample(descriptors)} ${sample(places)}`,
-      img: "https://source.unsplash.com/collection/483251",
+      img: 'https://source.unsplash.com/collection/483251',
       description:
-        "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus excepturicorporis tenetur natus quasi. Suscipit sunt ipsum cum dolore at. Optiorecusandae rem, eos ipsam molestiae veritatis incidunt aut hic",
+        'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus excepturicorporis tenetur natus quasi. Suscipit sunt ipsum cum dolore at. Optiorecusandae rem, eos ipsam molestiae veritatis incidunt aut hic',
       price: price,
     });
     await camp.save();
@@ -44,5 +45,5 @@ const seedDB = async () => {
 
 seedDB().then(() => {
   mongoose.connection.close();
-  console.log("Connection Closed");
+  console.log('Connection Closed');
 });
