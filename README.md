@@ -74,10 +74,10 @@
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/36_Express_Router%20%26%20Cookies">Section 47: Express Router & Cookies</a></td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/main/37_Express_Session%20%26%20Flash">Section 48: Express Session & Flash</a></td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/b1794d62b5bb092d2318ed4c99fa18b81dc38e54">Section 49: YelpCamp: Restructuring & Flash</a></td>
-    <td>Section 50: Authentication From "Scratch"</td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/87d58a461e99233403b990d04617b7dd34580942">Section 50: Authentication From "Scratch"</a></td>
   </tr>
   <tr>
-    <td>Section 51: YelpCamp: Adding In Authentication</td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/f22a3959e829abc8e5dead94826f4b58a8219030">Section 51: YelpCamp: Adding In Authentication</a></td>
     <td>Section 52: YelpCamp: Basic Authorization</td>
     <td>Section 53: YelpCamp: Controllers & Star Rating</td>
     <td>Section 54: YelpCamp: Image Upload</td>
