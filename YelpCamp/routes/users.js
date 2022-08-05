@@ -10,10 +10,9 @@ router
   .post(catchAsync(users.register));
 
 router
-  .route('login')
-  .get('/login', users.renderLoginForm)
+  .route('/login')
+  .get(users.renderLoginForm)
   .post(
-    '/login',
     passport.authenticate('local', {
       failureFlash: true,
       failureRedirect: '/login',
