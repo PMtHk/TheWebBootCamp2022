@@ -78,8 +78,8 @@
   </tr>
   <tr>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/f22a3959e829abc8e5dead94826f4b58a8219030">Section 51: YelpCamp: Adding In Authentication</a></td>
-    <td>Section 52: YelpCamp: Basic Authorization</td>
-    <td>Section 53: YelpCamp: Controllers & Star Rating</td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/f22a3959e829abc8e5dead94826f4b58a8219030">Section 52: YelpCamp: Basic Authorization</a></td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/4bf209e2e3fc33dfac07b66cabcf59a87e33c4f8">Section 53: YelpCamp: Controllers & Star Rating</a></td>
     <td>Section 54: YelpCamp: Image Upload</td>
     <td>Section 55: YelpCamp: Adding Maps</td>
   </tr>
