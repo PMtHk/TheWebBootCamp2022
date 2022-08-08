@@ -7,6 +7,7 @@ module.exports.campgroundSchema = Joi.object({
     location: Joi.string().required(),
     description: Joi.string().required(),
   }).required(),
+  deleteImages: Joi.array(),
 }); // joi schema 정의
 
 module.exports.reviewSchema = Joi.object({
