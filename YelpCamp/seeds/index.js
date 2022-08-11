@@ -47,6 +47,13 @@ const seedDB = async () => {
       description:
         'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repellendus excepturicorporis tenetur natus quasi. Suscipit sunt ipsum cum dolore at. Optiorecusandae rem, eos ipsam molestiae veritatis incidunt aut hic',
       price: price,
+      geometry: {
+        type: 'Point',
+        coordinates: [
+          cities[random1000].longitude,
+          cities[random1000].latitude,
+        ],
+      },
     });
     await camp.save();
   }
