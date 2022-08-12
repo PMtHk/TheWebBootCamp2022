@@ -21,9 +21,14 @@ const userRoutes = require('./routes/users');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 
+const MongoDBStore = require('connect-mongodb-session')(session);
+
+const dbUrl = 'mongodb://localhost:27017/yelp-camp';
+// const dbUrl = process.env.DB_URL
+
 // Connect to MongoDB
 mongoose
-  .connect('mongodb://localhost:27017/yelp-camp')
+  .connect(dbUrl)
   .then(() => {
     console.log('Connected to Database');
   })
@@ -43,7 +48,18 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize({ replaceWith: '_' }));
 
+const store = new MongoDBStore({
+  url: dbUrl,
+  databaseName: 'yelp-camp',
+  collection: 'sessions',
+});
+
+store.on('error', function (e) {
+  console.log('SESSION STORE ERROR', e);
+});
+
 const sessionConfig = {
+  store: store,
   name: 'YelpCampSession',
   secret: 'actualSecretKey',
   resave: false,
