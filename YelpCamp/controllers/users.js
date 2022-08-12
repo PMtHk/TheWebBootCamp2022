@@ -26,7 +26,6 @@ module.exports.renderLoginForm = (req, res) => {
 
 module.exports.login = (req, res) => {
   req.flash('success', 'Welcome Back!');
-  // console.log(req.session);
   res.redirect(req.session.returnTo || '/campgrounds');
   delete req.session.returnTo;
 };

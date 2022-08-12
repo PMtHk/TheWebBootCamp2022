@@ -21,10 +21,9 @@ const userRoutes = require('./routes/users');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 
-const MongoDBStore = require('connect-mongodb-session')(session);
+const MongoStore = require('connect-mongo');
 
-const dbUrl = 'mongodb://localhost:27017/yelp-camp';
-// const dbUrl = process.env.DB_URL
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
 // Connect to MongoDB
 mongoose
@@ -48,22 +47,16 @@ app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize({ replaceWith: '_' }));
 
-const store = new MongoDBStore({
-  url: dbUrl,
-  databaseName: 'yelp-camp',
-  collection: 'sessions',
-});
-
-store.on('error', function (e) {
-  console.log('SESSION STORE ERROR', e);
-});
+const secret = process.env.SECRET || 'actualSecretKey';
 
 const sessionConfig = {
-  store: store,
-  name: 'YelpCampSession',
-  secret: 'actualSecretKey',
+  secret: secret,
   resave: false,
   saveUninitialized: true,
+  store: MongoStore.create({
+    mongoUrl: dbUrl,
+  }),
+  name: 'YelpCampSession',
   cookie: {
     httpOnly: true,
     // secure: true,
@@ -73,7 +66,6 @@ const sessionConfig = {
 };
 app.use(session(sessionConfig));
 app.use(flash());
-// app.use(helmet());
 
 const scriptSrcUrls = [
   'https://stackpath.bootstrapcdn.com/',
@@ -162,6 +154,8 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render('error', { err });
 });
 
-app.listen(3000, () => {
-  console.log('Serving on port 3000');
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Serving on port ${port}`);
 });
