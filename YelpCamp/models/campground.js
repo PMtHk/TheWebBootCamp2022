@@ -48,7 +48,7 @@ CampgroundSchema.virtual('properties.popUpMarkup').get(function () {
 });
 
 CampgroundSchema.post('findOneAndDelete', async function (doc) {
-  console.log('Deleting Related Items');
+  // console.log('Deleting Related Items');
   if (doc) {
     await Review.deleteOne({
       _id: {

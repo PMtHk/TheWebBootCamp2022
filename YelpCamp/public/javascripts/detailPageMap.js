@@ -1,4 +1,5 @@
 mapboxgl.accessToken = mapToken;
+
 const map = new mapboxgl.Map({
   container: 'map', // container ID
   style: 'mapbox://styles/mapbox/outdoors-v10', // style URL
