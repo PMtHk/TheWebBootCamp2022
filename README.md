@@ -87,7 +87,7 @@
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/3f63897874b764286ee816afc529724b2c7f7b58/YelpCamp">Section 56: YelpCamp: Fancy Cluster Map</a></td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/06caff2e5fb3bb1329cca8b7b7c08a1079b7b1aa/YelpCamp">Section 57: YelpCamp: Styles Clean Up</a></td>
     <td>Section 58: YelpCamp: Common Security Issues</td>
-    <td>Section 59: YelpCamp: Deploying</td>
+    <td>Section 59: YelpCamp:<a href="https://zooby-yelpcamp.herokuapp.com/">Deploying</a></td>
     <td>Section 60: The End :(</td>
   </tr>
 
