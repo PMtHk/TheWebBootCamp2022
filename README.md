@@ -80,12 +80,12 @@
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/commit/f22a3959e829abc8e5dead94826f4b58a8219030">Section 51: YelpCamp: Adding In Authentication</a></td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/f22a3959e829abc8e5dead94826f4b58a8219030">Section 52: YelpCamp: Basic Authorization</a></td>
     <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/4bf209e2e3fc33dfac07b66cabcf59a87e33c4f8">Section 53: YelpCamp: Controllers & Star Rating</a></td>
-    <td>Section 54: YelpCamp: Image Upload</td>
-    <td>Section 55: YelpCamp: Adding Maps</td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/3f540cc943aa5271637564ddb93c38cf3ac3a7f5/YelpCamp">Section 54: YelpCamp: Image Upload</a></td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/9346568532fd8c007f84b45112bcce80493dadd4/YelpCamp">Section 55: YelpCamp: Adding Maps</a></td>
   </tr>
   <tr>
-    <td>Section 56: YelpCamp: Fancy Cluster Map</td>
-    <td>Section 57: YelpCamp: Styles Clean Up</td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/3f63897874b764286ee816afc529724b2c7f7b58/YelpCamp">Section 56: YelpCamp: Fancy Cluster Map</a></td>
+    <td><a href="https://github.com/PMtHk/TheWebBootCamp2022/tree/06caff2e5fb3bb1329cca8b7b7c08a1079b7b1aa/YelpCamp">Section 57: YelpCamp: Styles Clean Up</a></td>
     <td>Section 58: YelpCamp: Common Security Issues</td>
     <td>Section 59: YelpCamp: Deploying</td>
     <td>Section 60: The End :(</td>
